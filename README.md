@@ -1,6 +1,6 @@
 # wordle-bot
 
-A simple [wordle](https://www.powerlanguage.co.uk/wordle/) AI which attempts to greedily minimize the amount of remaining possible words. Run it as a command-line application on any platform.
+A simple [wordle](https://www.powerlanguage.co.uk/wordle/) AI which attempts to greedily minimize the amount of remaining possible words. It never loses and has an average score of 3.47.
 
 ### Commands
 Available commands:

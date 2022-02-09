@@ -118,15 +118,17 @@ int play(Word answer, Word_List guesses, Word_List answers, Word first, bool ver
 void benchmark(Word_List guesses, Word_List known_answers, Word_List answers) {
   Word first_word = decide_guess(guesses, known_answers);
   int score_sum = 0;
+  int loss_count = 0;
   for(int i = 0; i < answers.count; i++) {
     Word w = answers.words[i];
     int score = play(w, guesses, known_answers, first_word, false);
+    if(score > 6) loss_count++;
     score_sum += score;
     printf("Score on '");
     print_word(w);
     printf("': %i\n", score);
   }
-  printf("Average score: %.2f\n", score_sum/(float)answers.count);
+  printf("I had an average score of %.2f with %i total losses.\n", score_sum/(float)answers.count, loss_count);
 }
 
 int main(int argc, char *argv[]) {
@@ -195,7 +197,7 @@ int main(int argc, char *argv[]) {
       }
     } else if(argc == 2) {
       srand(time(NULL));
-      rand(); // Without this line the random number generator just follows time. 
+      rand(); // Without this line the random number generator just follows time.
       word = answers.words[rand()%answers.count];
       printf("Simulating bot with randomly picked word '");
       print_word(word);
